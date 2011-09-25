@@ -1,0 +1,52 @@
+\documentclass[compress]{beamer}
+%\documentclass[compress, handout]{beamer}
+
+% To create a handout: uncomment below and add handout as an option
+% for documentclass
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm]
+
+% not all of the packages below will be needed
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{units}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[amssymb]{SIunits}
+\usepackage{amssymb}
+\usepackage{microtype}
+\usepackage{bbm}
+\usepackage{booktabs}
+
+\usepackage[TOC]{style} % add option 'TOC' if you want an Outline before every section
+
+\usepackage{graphicx}
+%\graphicspath{{Figures/}} % uncomment to use a standard graphics location
+
+
+\title[] % (optional, use only with long presentation titles)
+{A scientific \LaTeX~presentation}
+\titlegraphic{\includegraphics[width=0.9\textwidth]{Figures/NAT_SIGN_druck_SW}}
+%\subtitle{A good subtitle} % (optional)
+\author[] % (optional, use only with lots of authors)
+{Author A, Author B}
+\date[]{September 21\textsuperscript{st} 2011} % \today ?
+\subject{A \LaTeX~presentation}
+
+
+\begin{document}
+
+\begin{frame} % title
+  \titlepage
+  \thispagestyle{empty}
+\end{frame}
+
+\begin{frame}{Outline} % first Outline
+  \tableofcontents
+\end{frame}
+
+% Input your presentation's contents here
+\input{Intro}
+
+\end{document}
