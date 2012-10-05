@@ -22,9 +22,9 @@ def build(ctx):
         )
 
     if ctx.cmd == 'build':
-                if ctx.options.view:
-                        ctx.exec_command("xdg-open {0}/talk.pdf".format(out))
+        if ctx.options.view:
+            ctx.exec_command("xdg-open {0}/talk.pdf".format(out))
 
 def options(ctx):
         ctx.add_option("--view", action="store_true", default=False,
-                help='view the PDf after it is built')
+                       help='view the PDf after it is built')
