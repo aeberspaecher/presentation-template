@@ -8,9 +8,6 @@ def configure(conf):
     if not conf.env.PDFLATEX:
         conf.fatal("Could not find pdflatex")
 
-def view_pdf(bld):
-    bld.exec_command("xdg-open \'{0}/talk.pdf'".format(out))
-
 def build(ctx):
     ctx(
             features = 'tex',
