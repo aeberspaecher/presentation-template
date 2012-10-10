@@ -5,6 +5,7 @@ out = "build"
 
 def configure(conf):
     conf.load('tex')
+
     if not conf.env.PDFLATEX:
         conf.fatal("Could not find pdflatex")
 
@@ -14,9 +15,12 @@ def build(ctx):
             type     = 'pdflatex', # pdflatex or xelatex
             source   = 'talk.tex', # mandatory, the source
             outs     = 'pdf', # 'pdf' or 'ps pdf'
-            #deps     = 'crossreferencing.lst', # to give dependencies directly
-            prompt   = 0, # 0 for the batch mode
+            prompt   = 0 # 0 for the batch mode
         )
+
+    # add manual dependency such that the presentation is rebuilt if the style
+    # package style.sty changes:
+    ctx.add_manual_dependency(ctx.path.find_node('talk.tex'), ctx.path.find_node('style.sty'))
 
     if ctx.cmd == 'build':
         if ctx.options.view:
