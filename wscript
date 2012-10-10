@@ -18,6 +18,8 @@ def build(ctx):
             prompt   = 0 # 0 for the batch mode
         )
 
+    ctx.add_post_fun(post)  # copy PDF
+
     # add manual dependency such that the presentation is rebuilt if the style
     # package style.sty changes:
     ctx.add_manual_dependency(ctx.path.find_node('talk.tex'), ctx.path.find_node('style.sty'))
@@ -25,6 +27,10 @@ def build(ctx):
     if ctx.cmd == 'build':
         if ctx.options.view:
             ctx.exec_command("xdg-open {0}/talk.pdf".format(out))
+
+def post(ctx):
+    print("Copy PDF file to top directory")
+    ctx.exec_command("cp {0}/talk.pdf".format(out) + " {0}".format(top))
 
 def options(ctx):
         ctx.add_option("--view", action="store_true", default=False,
