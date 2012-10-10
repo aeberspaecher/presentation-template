@@ -24,13 +24,12 @@ def build(ctx):
     # package style.sty changes:
     ctx.add_manual_dependency(ctx.path.find_node('talk.tex'), ctx.path.find_node('style.sty'))
 
-    if ctx.cmd == 'build':
-        if ctx.options.view:
-            ctx.exec_command("xdg-open {0}/talk.pdf".format(out))
-
 def post(ctx):
     print("Copy PDF file to top directory")
     ctx.exec_command("cp {0}/talk.pdf".format(out) + " {0}".format(top))
+    if ctx.options.view:
+        print("Open PDF file in default PDF viewer")
+        ctx.exec_command("xdg-open {0}/talk.pdf".format(out))
 
 def options(ctx):
         ctx.add_option("--view", action="store_true", default=False,
