@@ -2,26 +2,6 @@
 
 \ProvidesPackage{style}
 
-\usefonttheme{structurebold}
-
-\mode<presentation>{
-
-  % black and white-ish theme
-  \setbeamertemplate{navigation symbols}{}
-  \useoutertheme[subsection=false]{miniframes}  % as an alternative, use infoline without an option here
-  \setbeamercolor{separation line}{use=structure,bg=structure.fg!50!bg}
-  \useinnertheme[]{rectangles}
-  \usecolortheme{dove}  % outer color theme?
-  \usecolortheme{rose}  % inner color theme?
-  \setbeamercovered{transparent}
-  \usefonttheme{professionalfonts}
-}
-
-\definecolor{darkred}{rgb}{0.8,0.3,0.3}
-\definecolor{lighty}{rgb}{0.40,0.47,0.52}
-\setbeamercolor{alerted text}{fg=darkred}
-\setbeamercolor{example text}{fg=lighty}
-
 \setbeamertemplate{blocks}[rounded][shadow=true]
 
 % greyish box
@@ -34,10 +14,48 @@
 \newenvironment{alertbbox}[1]{\vspace{0.5ex}\begin{alertblock}{#1}}{\end{alertblock}\vspace{0.75ex}}
 
 \setcounter{tocdepth}{1}
+
 \DeclareOption{TOC}{
   \AtBeginSection[]{
     \begin{frame}<beamer>{Outline}
       \tableofcontents[currentsection]
     \end{frame}
 }}
+
+% declare option "infolines" that will use the infolines themes instead of miniframes one
+\newif\if@useinfolines
+\@useinfolinesfalse
+\DeclareOption{infolines}{\@useinfolinestrue}
 \ProcessOptions\relax
+
+% Option processing:
+
+\if@useinfolines
+\mode<presentation>{
+  % black and white-ish theme with infolines
+  \setbeamertemplate{navigation symbols}{}
+  \useoutertheme{infolines}
+  \useinnertheme[]{rectangles}
+  \usecolortheme{lily}  % outer color theme?
+  \usecolortheme{rose}  % inner color theme?
+}
+\else
+\mode<presentation>{
+  % black and white-ish theme with miniframes
+  \setbeamertemplate{navigation symbols}{}
+  \useoutertheme[subsection=false]{miniframes}
+  \setbeamercolor{separation line}{use=structure,bg=structure.fg!50!bg}
+  \useinnertheme[]{rectangles}
+  \usecolortheme{dove}  % outer color theme?
+  \usecolortheme{rose}  % inner color theme?
+}
+\fi
+
+\setbeamercovered{transparent}
+\usefonttheme{structurebold}
+\usefonttheme{professionalfonts}
+
+\definecolor{darkred}{rgb}{0.8,0.3,0.3}
+\definecolor{lighty}{rgb}{0.40,0.47,0.52}
+\setbeamercolor{alerted text}{fg=darkred}
+\setbeamercolor{example text}{fg=lighty}

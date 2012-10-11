@@ -6,14 +6,20 @@ About
 =====
 
 This is a template for a scientific LaTeX presentation created by
-Alexander Eberspächer. It uses the beamer class and defines a
-beautiful light style.
+Alexander Eberspächer. It uses the beamer class and defines two
+beautiful light styles.
 
 Build/Usage
 ===========
 
-The ``waf`` build system is used for the presentation. It seems ``waf`` is smart enough to detect changed input files (and
-graphics) and trigger a rebuild if necessary.
+Change author, title and related things in talk.tex. Then add content files
+to include at the bottom of talk.tex. Not that the style packages offers two
+different styles (based on the beamer class themes miniframes and infolines,
+respectively).
+
+The ``waf`` build system is used for the presentation. It seems ``waf`` is
+smart enough to detect changed input files (and graphics) and trigger a
+rebuild if necessary.
 
 Configure & Build
 -----------------
